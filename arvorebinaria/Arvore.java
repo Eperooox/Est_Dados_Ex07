@@ -172,7 +172,6 @@ public class Arvore {
             System.out.print(node.valor + " ");
         }
     }
-
     public void excluir(int valor) {
         raiz = excluirRecursivo(raiz, valor);
     }
@@ -194,7 +193,7 @@ public class Arvore {
             }
 
             // Nó com dois descendentes: encontrar o sucessor (mais à esquerda na subárvore direita)
-            node.valor = encontrarMaiorValor(node.direita);
+            node.valor = encontrarMenorValor(node.direita);
 
             // Excluir o sucessor
             node.direita = excluirRecursivo(node.direita, node.valor);
@@ -202,12 +201,12 @@ public class Arvore {
         return node;
     }
 
-    private int encontrarMaiorValor(No node) {
-        int maiorValor = node.valor;
-        while (node.direita != null) {
-            maiorValor = node.direita.valor;
-            node = node.direita;
+    private int encontrarMenorValor(No node) {
+        int menorValor = node.valor;
+        while (node.esquerda != null) {
+            menorValor = node.esquerda.valor;
+            node = node.esquerda;
         }
-        return maiorValor;
+        return menorValor;
     }
 }
